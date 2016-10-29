@@ -1,7 +1,8 @@
 # Searching via RSQL
 
 This is a little project for playing around with some libraries for searching with RSQL.
-RSQL is a super-set of the Feed Item Query Language (FIQL). 
+RSQL is a super-set of the Feed Item Query Language (FIQL). The libraries provide a generic
+way to search on JPA entities.
 
 ## Some examples:
 
