@@ -32,6 +32,7 @@ For using QueryDsl with RSQL
 ## Issues i see
 
 * what if the searched-for entity is related to other entities, e.g. via `@ManyToOne`? How can the "rsql-jpa"
-transformer be used for this?
+transformer be used for this? Is e.g. such a path expression supported: `director.firstName==John`?
 * the EntityManager is needed for the "rsql-jpa". How can this be used together with Spring and especially the
 `@Repository` instances?
+* the "rsql-jpa" cannot compare Dates - see the baeldung example and create a custom `Specification`, which supports this

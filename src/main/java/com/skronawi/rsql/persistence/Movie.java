@@ -12,7 +12,7 @@ public class Movie {
     @GeneratedValue
     String id;
     String name;
-    Date year;
+    int year;
 
     public Movie() {
     }
@@ -33,11 +33,11 @@ public class Movie {
         this.name = name;
     }
 
-    public Date getYear() {
+    public int getYear() {
         return year;
     }
 
-    public void setYear(Date year) {
+    public void setYear(int year) {
         this.year = year;
     }
 }
