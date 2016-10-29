@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+
+    <MOVIE ID="01" NAME="Aliens" YEAR="2016-01-01 00:00:00.000"/>
+    <MOVIE ID="02" NAME="Mortal Kombat" YEAR="1992-01-01 00:00:00.000"/>
+    <MOVIE ID="03" NAME="Terminator" YEAR="2005-01-01 00:00:00.000"/>
+    <MOVIE ID="04" NAME="Terminator 2" YEAR="2000-01-01 00:00:00.000"/>
+    <MOVIE ID="05" NAME="Popeye" YEAR="1967-01-01 00:00:00.000"/>
+    <MOVIE ID="06" NAME="Die Schöne und das Biest" YEAR="2001-01-01 00:00:00.000"/>
+
+</dataset>
