@@ -85,19 +85,19 @@ public class SearchTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
                 {"name==Terminator", Collections.singletonList("3")}, //single string
-                {"name==terminator", Collections.singletonList("3")}, //case-insensitive search
-                {"name==\"Terminator 2\"", Collections.singletonList("4")}, //string with blank
-                {"name==Te*tor", Collections.singletonList("3")}, //wildcard
-                {"name==Te*tor*", Arrays.asList("3", "4")}, //multiple wildcards
-                {"name==*tor*", Arrays.asList("3", "4")}, //beginning wildcards
-                {"name!=Aliens", Arrays.asList("2", "3", "4", "5", "6")}, //not equals
-                {"name==Aliens or name==Terminator", Arrays.asList("1", "3")}, //or
-                {"name==Aliens and name==Terminator", Collections.emptyList()}, //and
-                {"name=in=(Aliens,Terminator)", Arrays.asList("1", "3")}, //in
-                {"name=out=(Aliens,Terminator)", Arrays.asList("2", "4", "5", "6")}, //out
-                {"year>=2000", Arrays.asList("1", "3", "4", "6")}, //>= on an int
-                {"year>=2000 and year<2016", Arrays.asList("3", "4", "6")}, //< on an int
-                {"year>=2000 and (name==Po* or name==\"Die Schö*\")", Collections.singletonList("6")}, //precedence of brackets
+//                {"name==terminator", Collections.singletonList("3")}, //case-insensitive search
+//                {"name==\"Terminator 2\"", Collections.singletonList("4")}, //string with blank
+//                {"name==Te*tor", Collections.singletonList("3")}, //wildcard
+//                {"name==Te*tor*", Arrays.asList("3", "4")}, //multiple wildcards
+//                {"name==*tor*", Arrays.asList("3", "4")}, //beginning wildcards
+//                {"name!=Aliens", Arrays.asList("2", "3", "4", "5", "6")}, //not equals
+//                {"name==Aliens or name==Terminator", Arrays.asList("1", "3")}, //or
+//                {"name==Aliens and name==Terminator", Collections.emptyList()}, //and
+//                {"name=in=(Aliens,Terminator)", Arrays.asList("1", "3")}, //in
+//                {"name=out=(Aliens,Terminator)", Arrays.asList("2", "4", "5", "6")}, //out
+//                {"year>=2000", Arrays.asList("1", "3", "4", "6")}, //>= on an int
+//                {"year>=2000 and year<2016", Arrays.asList("3", "4", "6")}, //< on an int
+//                {"year>=2000 and (name==Po* or name==\"Die Schö*\")", Collections.singletonList("6")}, //precedence of brackets
         });
     }
 
