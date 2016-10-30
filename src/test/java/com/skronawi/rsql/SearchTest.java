@@ -96,8 +96,10 @@ public class SearchTest {
                 {"title=in=(Aliens,Terminator)", Arrays.asList("1", "3")}, //in
                 {"title=out=(Aliens,Terminator)", Arrays.asList("2", "4", "5", "6")}, //out
                 {"year>=2000-01-01T00:00:00", Arrays.asList("1", "3", "4", "6")}, //>= on a date
-                {"year>=2000-01-01T00:00:00 and year<2016-01-01T00:00:00", Arrays.asList("3", "4", "6")}, //< on a date
-                {"year>=2000-01-01T00:00:00 and (title==Pope* or title==\"Die Schön*\")",
+                {"year>=2000-01-01T00:00:00.000", Arrays.asList("1", "3", "4", "6")}, //>= other format
+                {"year>=2000-01-01", Arrays.asList("1", "3", "4", "6")}, //>= another format
+                {"year>=2000-01-01 and year<2016-01-01", Arrays.asList("3", "4", "6")}, //< on a date
+                {"year>=2000-01-01 and (title==Pope* or title==\"Die Schön*\")",
                         Collections.singletonList("6")}, //precedence of brackets
                 {"isRatedM==false", Arrays.asList("5", "6")}, //booleans
                 {"isratedm==false", Arrays.asList("5", "6")}, //especially this selector is case-insensitive
