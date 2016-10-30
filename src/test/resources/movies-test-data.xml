@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
 
-    <!--<MOVIE ID="1" NAME="Aliens" YEAR="2016"/>-->
-    <!--<MOVIE ID="2" NAME="Mortal Kombat" YEAR="1992"/>-->
-    <!--<MOVIE ID="3" NAME="Terminator" YEAR="2005"/>-->
-    <!--<MOVIE ID="4" NAME="Terminator 2" YEAR="2000"/>-->
-    <!--<MOVIE ID="5" NAME="Popeye" YEAR="1967"/>-->
-    <!--<MOVIE ID="6" NAME="Die Schöne und das Biest" YEAR="2001"/>-->
+    <PERSON ID="1" FIRSTNAME="John" LASTNAME="Smith"/>
+    <PERSON ID="2" FIRSTNAME="Max" LASTNAME="Power"/>
 
-    <MOVIE ID="1" TITLE="Aliens" YEAR="2016-01-01 00:00:00.000" ISRATEDM="true" COSTINMILLIONDOLLARS="10"/>
-    <MOVIE ID="2" TITLE="Mortal Kombat" YEAR="1992-01-01 00:00:00.000" ISRATEDM="true" COSTINMILLIONDOLLARS="20"/>
-    <MOVIE ID="3" TITLE="Terminator" YEAR="2005-01-01 00:00:00.000" ISRATEDM="true" COSTINMILLIONDOLLARS="14"/>
-    <MOVIE ID="4" TITLE="Terminator 2" YEAR="2000-01-01 00:00:00.000" ISRATEDM="true" COSTINMILLIONDOLLARS="20"/>
-    <MOVIE ID="5" TITLE="Popeye" YEAR="1967-01-01 00:00:00.000" ISRATEDM="false" COSTINMILLIONDOLLARS="2"/>
-    <MOVIE ID="6" TITLE="Die Schöne und das Biest" YEAR="2001-01-01 00:00:00.000" ISRATEDM="false" COSTINMILLIONDOLLARS="5"/>
+    <MOVIE ID="1" TITLE="Aliens" YEAR="2016-01-01 00:00:00.000" ISRATEDM="true" COSTINMILLIONDOLLARS="10"
+           REGISSEUR_ID="1"/>
+    <MOVIE ID="2" TITLE="Mortal Kombat" YEAR="1992-01-01 00:00:00.000" ISRATEDM="true" COSTINMILLIONDOLLARS="20"
+           REGISSEUR_ID="2"/>
+    <MOVIE ID="3" TITLE="Terminator" YEAR="2005-01-01 00:00:00.000" ISRATEDM="true" COSTINMILLIONDOLLARS="14"
+           REGISSEUR_ID="2"/>
+    <MOVIE ID="4" TITLE="Terminator 2" YEAR="2000-01-01 00:00:00.000" ISRATEDM="true" COSTINMILLIONDOLLARS="20"
+           REGISSEUR_ID="1"/>
+    <MOVIE ID="5" TITLE="Popeye" YEAR="1967-01-01 00:00:00.000" ISRATEDM="false" COSTINMILLIONDOLLARS="2"
+           REGISSEUR_ID="1"/>
+    <MOVIE ID="6" TITLE="Die Schöne und das Biest" YEAR="2001-01-01 00:00:00.000" ISRATEDM="false"
+           COSTINMILLIONDOLLARS="5" REGISSEUR_ID="1"/>
 
 </dataset>

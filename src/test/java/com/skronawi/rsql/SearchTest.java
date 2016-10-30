@@ -62,6 +62,7 @@ public class SearchTest {
 
     }
 
+    //for making the test spring-aware
     @ClassRule
     public static final SpringClassRule SPRING_CLASS_RULE = new SpringClassRule();
     @Rule
@@ -70,6 +71,7 @@ public class SearchTest {
     @Autowired
     private SearchLogic searchLogic;
 
+    //for looking into the database while debugging
     @Autowired
     private MovieRepository movieRepository;
 
@@ -106,6 +108,7 @@ public class SearchTest {
                 {"isratedm==FALSE", Arrays.asList("5", "6")}, //booleans are case-insensitive
                 {"isratedm==FALSE", Arrays.asList("5", "6")}, //booleans are case-insensitive
                 {"cost>=20", Arrays.asList("2", "4")}, //>= on an int, cost is mapped to costInMillionDollars
+                {"regisseur.firstName==John", Arrays.asList("1", "4", "5", "6")}, //search in referenced entities. the attribute is not mapped, therefore case-sensitive
         });
     }
 

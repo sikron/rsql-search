@@ -1,8 +1,6 @@
 package com.skronawi.rsql.persistence;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -10,11 +8,15 @@ public class Movie {
 
     @Id
     @GeneratedValue
-    String id;
-    String title;
-    Date year;
-    boolean isRatedM;
-    int costInMillionDollars;
+    private String id;
+    private String title;
+    private Date year;
+    private boolean isRatedM;
+    private int costInMillionDollars;
+
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name = "regisseur_id")
+    private Person regisseur;
 
     public Movie() {
     }
@@ -57,5 +59,13 @@ public class Movie {
 
     public void setCostInMillionDollars(int costInMillionDollars) {
         this.costInMillionDollars = costInMillionDollars;
+    }
+
+    public Person getRegisseur() {
+        return regisseur;
+    }
+
+    public void setRegisseur(Person regisseur) {
+        this.regisseur = regisseur;
     }
 }
