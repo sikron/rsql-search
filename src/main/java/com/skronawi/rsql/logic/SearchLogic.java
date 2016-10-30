@@ -21,6 +21,6 @@ public class SearchLogic {
         //see also https://github.com/jirutka/rsql-hibernate or https://github.com/vineey/archelix-rsql
         Node node = new RSQLParser().parse(query);
 
-        return searchService.search(node, new Sort.Order(Sort.Direction.ASC, "name"), page, size);
+        return searchService.search(node, new Sort.Order(Sort.Direction.ASC, "title"), page, size);
     }
 }

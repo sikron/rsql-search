@@ -11,8 +11,10 @@ public class Movie {
     @Id
     @GeneratedValue
     String id;
-    String name;
-    int year;
+    String title;
+    Date year;
+    boolean isRatedM;
+    int costInMillionDollars;
 
     public Movie() {
     }
@@ -25,19 +27,35 @@ public class Movie {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public int getYear() {
+    public Date getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Date year) {
         this.year = year;
+    }
+
+    public boolean isRatedM() {
+        return isRatedM;
+    }
+
+    public void setRatedM(boolean ratedM) {
+        isRatedM = ratedM;
+    }
+
+    public int getCostInMillionDollars() {
+        return costInMillionDollars;
+    }
+
+    public void setCostInMillionDollars(int costInMillionDollars) {
+        this.costInMillionDollars = costInMillionDollars;
     }
 }

@@ -6,8 +6,8 @@ way to search on JPA entities.
 
 ## Some examples:
 
-    name=="Kill Bill";year=gt=2003
-    name=="Kill Bill" and year>2003
+    title=="Kill Bill";year=gt=2003
+    title=="Kill Bill" and year>2003
     
     genres=in=(sci-fi,action);(director=='Christopher Nolan',actor==*Bale);year=ge=2000
     genres=in=(sci-fi,action) and (director=='Christopher Nolan' or actor==*Bale) and year>=2000
@@ -35,4 +35,6 @@ For using QueryDsl with RSQL
 transformer be used for this? Is e.g. such a path expression supported: `director.firstName==John`?
 * the EntityManager is needed for the "rsql-jpa". How can this be used together with Spring and especially the
 `@Repository` instances?
+  * see the baeldung example. a own specification generation can be implemented for a custom RSQLVisitor.
 * the "rsql-jpa" cannot compare Dates - see the baeldung example and create a custom `Specification`, which supports this
+  * the newest version 2.0.7-SNAPSHOT can. it is not in maven, though. i built it locally and used it as dependency.

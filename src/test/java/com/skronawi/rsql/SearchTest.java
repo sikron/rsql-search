@@ -56,8 +56,8 @@ public class SearchTest {
 
         @Bean
         public SearchService searchService() {
-//            return new CriteriaQuerySearchService();
-            return new PredicateSearchService();
+            return new CriteriaQuerySearchService();
+//            return new PredicateSearchService();
         }
 
     }
@@ -84,25 +84,31 @@ public class SearchTest {
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {"name==Terminator", Collections.singletonList("3")}, //single string
-//                {"name==terminator", Collections.singletonList("3")}, //case-insensitive search
-//                {"name==\"Terminator 2\"", Collections.singletonList("4")}, //string with blank
-//                {"name==Te*tor", Collections.singletonList("3")}, //wildcard
-//                {"name==Te*tor*", Arrays.asList("3", "4")}, //multiple wildcards
-//                {"name==*tor*", Arrays.asList("3", "4")}, //beginning wildcards
-//                {"name!=Aliens", Arrays.asList("2", "3", "4", "5", "6")}, //not equals
-//                {"name==Aliens or name==Terminator", Arrays.asList("1", "3")}, //or
-//                {"name==Aliens and name==Terminator", Collections.emptyList()}, //and
-//                {"name=in=(Aliens,Terminator)", Arrays.asList("1", "3")}, //in
-//                {"name=out=(Aliens,Terminator)", Arrays.asList("2", "4", "5", "6")}, //out
-//                {"year>=2000", Arrays.asList("1", "3", "4", "6")}, //>= on an int
-//                {"year>=2000 and year<2016", Arrays.asList("3", "4", "6")}, //< on an int
-//                {"year>=2000 and (name==Po* or name==\"Die Schö*\")", Collections.singletonList("6")}, //precedence of brackets
+                {"title==Terminator", Collections.singletonList("3")}, //single string
+                {"title==terminator", Collections.singletonList("3")}, //case-insensitive search
+                {"title==\"Terminator 2\"", Collections.singletonList("4")}, //string with blank
+                {"title==Te*tor", Collections.singletonList("3")}, //wildcard
+                {"title==Te*tor*", Arrays.asList("3", "4")}, //multiple wildcards
+                {"title==*tor*", Arrays.asList("3", "4")}, //beginning wildcards
+                {"title!=Aliens", Arrays.asList("2", "3", "4", "5", "6")}, //not equals
+                {"title==Aliens or title==Terminator", Arrays.asList("1", "3")}, //or
+                {"title==Aliens and title==Terminator", Collections.emptyList()}, //and
+                {"title=in=(Aliens,Terminator)", Arrays.asList("1", "3")}, //in
+                {"title=out=(Aliens,Terminator)", Arrays.asList("2", "4", "5", "6")}, //out
+                {"year>=2000-01-01T00:00:00", Arrays.asList("1", "3", "4", "6")}, //>= on a date
+                {"year>=2000-01-01T00:00:00 and year<2016-01-01T00:00:00", Arrays.asList("3", "4", "6")}, //< on a date
+                {"year>=2000-01-01T00:00:00 and (title==Pope* or title==\"Die Schön*\")",
+                        Collections.singletonList("6")}, //precedence of brackets
+                {"isRatedM==false", Arrays.asList("5", "6")}, //booleans
+                {"isratedm==false", Arrays.asList("5", "6")}, //especially this selector is case-insensitive
+                {"isratedm==FALSE", Arrays.asList("5", "6")}, //booleans are case-insensitive
+                {"isratedm==FALSE", Arrays.asList("5", "6")}, //booleans are case-insensitive
+                {"cost>=20", Arrays.asList("2", "4")}, //>= on an int, cost is mapped to costInMillionDollars
         });
     }
 
     @Test
-    public void testSearchByName() throws Exception {
+    public void testSearch() throws Exception {
 
         Page<Movie> movies = searchLogic.search(query, 0, 20);
 

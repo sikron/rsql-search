@@ -1,8 +1,6 @@
 package com.skronawi.rsql.persistence;
 
 import com.github.tennaito.rsql.jpa.JpaCriteriaQueryVisitor;
-import com.github.tennaito.rsql.misc.ArgumentFormatException;
-import com.github.tennaito.rsql.misc.ArgumentParser;
 import cz.jirutka.rsql.parser.ast.Node;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,9 +14,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Root;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 /*
@@ -37,6 +32,16 @@ public class CriteriaQuerySearchService implements SearchService {
 
         //https://github.com/tennaito/rsql-jpa
         JpaCriteriaQueryVisitor<Movie> visitor = new JpaCriteriaQueryVisitor<>();
+
+        visitor.getBuilderTools().setPropertiesMapper((s, aClass) -> {
+            if (s.equalsIgnoreCase("isratedm")) {
+                return "isRatedM";
+            }
+            if (s.equalsIgnoreCase("cost")) {
+                return "costInMillionDollars";
+            }
+            return s;
+        });
 
         CriteriaQuery<Movie> criteriaQuery = node.accept(visitor, entityManager);
 

@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
+a own approach for building a query using predicates. as the maven-version of the "rsql-jpa" does
+not support dates.
+
 see
 - https://spring.io/blog/2011/04/26/advanced-spring-data-jpa-specifications-and-querydsl/
 - http://www.baeldung.com/rest-api-search-language-rsql-fiql
