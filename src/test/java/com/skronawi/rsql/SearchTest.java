@@ -86,29 +86,51 @@ public class SearchTest {
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {"title==Terminator", Collections.singletonList("3")}, //single string
-                {"title==terminator", Collections.singletonList("3")}, //case-insensitive search
-                {"title==\"Terminator 2\"", Collections.singletonList("4")}, //string with blank
-                {"title==Te*tor", Collections.singletonList("3")}, //wildcard
-                {"title==Te*tor*", Arrays.asList("3", "4")}, //multiple wildcards
-                {"title==*tor*", Arrays.asList("3", "4")}, //beginning wildcards
-                {"title!=Aliens", Arrays.asList("2", "3", "4", "5", "6")}, //not equals
-                {"title==Aliens or title==Terminator", Arrays.asList("1", "3")}, //or
-                {"title==Aliens and title==Terminator", Collections.emptyList()}, //and
-                {"title=in=(Aliens,Terminator)", Arrays.asList("1", "3")}, //in
-                {"title=out=(Aliens,Terminator)", Arrays.asList("2", "4", "5", "6")}, //out
-                {"year>=2000-01-01T00:00:00", Arrays.asList("1", "3", "4", "6")}, //>= on a date
-                {"year>=2000-01-01T00:00:00.000", Arrays.asList("1", "3", "4", "6")}, //>= other format
-                {"year>=2000-01-01", Arrays.asList("1", "3", "4", "6")}, //>= another format
-                {"year>=2000-01-01 and year<2016-01-01", Arrays.asList("3", "4", "6")}, //< on a date
-                {"year>=2000-01-01 and (title==Pope* or title==\"Die Schön*\")",
-                        Collections.singletonList("6")}, //precedence of brackets
-                {"isRatedM==false", Arrays.asList("5", "6")}, //booleans
-                {"isratedm==false", Arrays.asList("5", "6")}, //especially this selector is case-insensitive
-                {"isratedm==FALSE", Arrays.asList("5", "6")}, //booleans are case-insensitive
-                {"isratedm==FALSE", Arrays.asList("5", "6")}, //booleans are case-insensitive
-                {"cost>=20", Arrays.asList("2", "4")}, //>= on an int, cost is mapped to costInMillionDollars
-                {"regisseur.firstName==John", Arrays.asList("1", "4", "5", "6")}, //search in referenced entities. the attribute is not mapped, therefore case-sensitive
+                //single string
+                {"title==Terminator", Collections.singletonList("3")},
+                // case-insensitive search
+                {"title==terminator", Collections.singletonList("3")},
+                // string with blank
+                {"title==\"Terminator 2\"", Collections.singletonList("4")},
+                // wildcard
+                {"title==Te*tor", Collections.singletonList("3")},
+                // multiple wildcards
+                {"title==Te*tor*", Arrays.asList("3", "4")},
+                // starting with wildcards
+                {"title==*tor*", Arrays.asList("3", "4")},
+                // not equals
+                {"title!=Aliens", Arrays.asList("2", "3", "4", "5", "6")},
+                // or
+                {"title==Aliens or title==Terminator", Arrays.asList("1", "3")},
+                // and
+                {"title==Aliens and title==Terminator", Collections.emptyList()},
+                // in
+                {"title=in=(Aliens,Terminator)", Arrays.asList("1", "3")},
+                // out
+                {"title=out=(Aliens,Terminator)", Arrays.asList("2", "4", "5", "6")},
+                // >= on a date
+                {"year>=2000-01-01T00:00:00", Arrays.asList("1", "3", "4", "6")},
+                // >= other format
+                {"year>=2000-01-01T00:00:00.000", Arrays.asList("1", "3", "4", "6")},
+                // >= another format
+                {"year>=2000-01-01", Arrays.asList("1", "3", "4", "6")},
+                // < on a date
+                {"year>=2000-01-01 and year<2016-01-01", Arrays.asList("3", "4", "6")},
+                // precedence of brackets
+                {"year>=2000-01-01 and (title==Pope* or title==\"Die Schön*\")", Collections.singletonList("6")},
+                // booleans
+                {"isRatedM==false", Arrays.asList("5", "6")},
+                // especially this selector is case-insensitive as it is mapped
+                {"isratedm==false", Arrays.asList("5", "6")},
+                // booleans are case-insensitive
+                {"isratedm==FALSE", Arrays.asList("5", "6")},
+                // >= on an int, cost is mapped to costInMillionDollars
+                {"cost>=20", Arrays.asList("2", "4")},
+                // search in referenced entities. the attribute is not mapped, therefore case-sensitive
+                {"regisseur.firstName==John", Arrays.asList("1", "4", "5", "6")},
+                // what queries are generated?
+                {"regisseur.firstName=in=(John,Max)", Arrays.asList("1", "2", "3", "4", "5", "6")},
+                {"regisseur.firstName=out=(John,Max)", Collections.emptyList()},
         });
     }
 
